@@ -1,13 +1,15 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-
-  const {cart} = useSelector(data=>data.user)
-  console.log(cart)
+  const navigate = useNavigate();
+  const { cart } = useSelector((data) => data.user);
+  console.log(cart);
   return (
     <div>
       <p>ALL CART PRODUCTS</p>
+      <button onClick={() => navigate("/")}>Continue Shopping</button>
       <ul>
         {cart &&
           cart.map((data) => (
@@ -17,15 +19,13 @@ const Cart = () => {
                 alt="image"
                 style={{ height: 100, width: 100 }}
               />
-              <p style={{ color: "black" }}>name:{data.name}</p>
-              <p style={{ color: "black" }}>quantity:{data.quantity}</p>
-              {/* </NavLink> */}
-
+              <p>name:{data.name}</p>
+              <p>quantity:{data.quantity}</p>
             </div>
           ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
